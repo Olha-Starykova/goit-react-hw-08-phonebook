@@ -3,16 +3,7 @@ import authActions from './auth-actions';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-https://connections-api.herokuapp.com
 
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
 
 /*
  * POST @ /users/signup
@@ -20,20 +11,18 @@ https://connections-api.herokuapp.com
  *
  * После успешной регистрации добавляем токен в HTTP-заголовок
  */
-// const register = credentials => async dispatch => {
-//   dispatch(authActions.registerRequest());
 
-//   try {
-//     const response = await axios.post('/users/signup', credentials);
 
-//     token.set(response.data.token);
-//     dispatch(authActions.registerSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.registerError(error.message));
-//   }
-// };
-
-const register = credentials =>  dispatch => { }
+const register = credentials =>async dispatch => {
+    dispatch(authActions.registerRequest());
+    try {
+        const response = await axios.post('/users/signup', credentials)
+        dispatch(authActions.registerSuccess(response.data))
+    } catch (error) {
+        dispatch(authActions.registerError(error))
+    }
+    
+ }
 
 /*
  * POST @ /users/login
