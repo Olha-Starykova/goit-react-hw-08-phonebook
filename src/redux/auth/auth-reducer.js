@@ -12,7 +12,10 @@ const initialUserState = { name: null, email: null };
 //   [authActions.getCurrentUserSuccess]: (_, { payload }) => payload,
 // });
 
-const user = createReducer(initialUserState, {});
+const user = createReducer(initialUserState, {
+  [authActions.registerSuccess]: (_, { payload }) => payload.user,
+  [authActions.loginSuccess]: (_, { payload }) => payload.user,
+});
 
 // const token = createReducer(null, {
 //   [authActions.registerSuccess]: (_, { payload }) => payload.token,
@@ -20,7 +23,10 @@ const user = createReducer(initialUserState, {});
 //   [authActions.logoutSuccess]: () => null,
 // });
 
-const token = createReducer(null, {});
+const token = createReducer(null, {
+  [authActions.registerSuccess]: (_, { payload }) => payload.token,
+  [authActions.loginSuccess]: (_, { payload }) => payload.token,
+});
 
 
 // const setError = (_, { payload }) => payload;
@@ -32,7 +38,14 @@ const token = createReducer(null, {});
 //   [authActions.getCurrentUserError]: setError,
 // });
 
-const error = createReducer(null, {});
+
+const setError = (_, { payload }) => payload;
+const error = createReducer(null, {
+  [authActions.registerError]: setError,
+  [authActions.loginError]: setError,
+});
+
+
 
 export default combineReducers({
   user,
