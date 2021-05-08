@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import Button from '@material-ui/core/Button';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth/';
 
@@ -11,6 +14,9 @@ const styles = {
     flexDirection: 'column',
     marginBottom: 15,
   },
+  regDiv: {
+    padding: 20
+  }
 };
 
 class RegisterView extends Component {
@@ -36,7 +42,9 @@ class RegisterView extends Component {
     const { name, email, password } = this.state;
 
     return (
-      <div>
+      <div style={styles.regDiv}>
+        <Card>
+          <CardActionArea>
         <h1>Страница регистрации</h1>
 
         <form
@@ -73,9 +81,13 @@ class RegisterView extends Component {
               onChange={this.handleChange}
             />
           </label>
-
-          <button type="submit">Зарегистрироваться</button>
-        </form>
+              <Button type="submit" size="small" color="secondary">
+             Зарегистрироваться
+              </Button>
+          {/* <button type="submit">Зарегистрироваться</button> */}
+            </form>
+            </CardActionArea>
+          </Card>
       </div>
     );
   }
