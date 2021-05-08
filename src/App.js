@@ -13,12 +13,24 @@ import LoginView from './views/LoginView'
  import TodosView from './views/TodosView'
 import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
+import { authOperations } from './redux/auth';
+
+
+
+
+  // componentDidMount() {
+  //   this.props.fetchTodos();
+  // }
+  // const App = () => (
+  
+
 class App extends Component {
 
   componentDidMount() {
-    this.props.fetchTodos();
+    this.props.onGetCurretnUser();
   }
-  // const App = () => (
+
+
   render() {
     return (
       <div>
@@ -45,12 +57,16 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  isLoading: contactsSelectors.getLoading(state),
-})
 
-const mapDispatchToProps = dispatch => ({
-fetchTodos: ()=>dispatch(contactsOperations.fetchTodos())
-})
+const mapDispatchToProps = {
+  onGetCurretnUser: authOperations.getCurrentUser,
+};
+// const mapStateToProps = state => ({
+//   isLoading: contactsSelectors.getLoading(state),
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// const mapDispatchToProps = dispatch => ({
+// fetchTodos: ()=>dispatch(contactsOperations.fetchTodos())
+// })
+
+export default connect(null, mapDispatchToProps)(App);

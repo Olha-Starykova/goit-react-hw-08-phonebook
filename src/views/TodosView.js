@@ -72,11 +72,10 @@ import React, { Component } from 'react';
  import ContactForm from '../components/ContactForm/ContactForm';
  import ContactList from '../components/ContactList/ContactList';
  import Filter from '../components/Filter/Filter';
-// import { connect } from 'react-redux';
-// import contactsOperations from './redux/contacts/contacts-operations'
-// import contactsSelectors from './redux/contacts/contacts-selectors'
-// import AuthNav from './components/AuthNav'
-//  import HomeView from './views/HomeView'
+ import { connect } from 'react-redux';
+ import contactsOperations from '../redux/contacts/contacts-operations'
+ import contactsSelectors from '../redux/contacts/contacts-selectors'
+
 //  import RegisterView from './views/RegisterView'
 // import LoginView from './views/LoginView'
 // // import TodosView from './views/TodosView'
@@ -86,9 +85,9 @@ import React, { Component } from 'react';
 
 class TodosView  extends Component {
 
-//   componentDidMount() {
-//     this.props.fetchTodos();
-//   }
+  componentDidMount() {
+    this.props.fetchTodos();
+  }
   // const App = () => (
   render() {
     return (
@@ -111,6 +110,17 @@ class TodosView  extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isLoading: contactsSelectors.getLoading(state),
+})
+
+const mapDispatchToProps = dispatch => ({
+fetchTodos: ()=>dispatch(contactsOperations.fetchTodos())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodosView );
+
+
 // const mapStateToProps = state => ({
 //   isLoading: contactsSelectors.getLoading(state),
 // })
@@ -119,5 +129,4 @@ class TodosView  extends Component {
 // fetchTodos: ()=>dispatch(contactsOperations.fetchTodos())
 // })
 
-// export default connect(mapStateToProps, mapDispatchToProps)(TodosView );
-export default TodosView ;
+// export default TodosView ;
