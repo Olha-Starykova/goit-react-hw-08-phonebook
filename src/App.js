@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react';
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactList from './components/ContactList/ContactList';
-import Filter from './components/Filter/Filter';
+// import ContactForm from './components/ContactForm/ContactForm';
+// import ContactList from './components/ContactList/ContactList';
+// import Filter from './components/Filter/Filter';
 import { connect } from 'react-redux';
-import contactsOperations from './redux/contacts/contacts-operations'
-import contactsSelectors from './redux/contacts/contacts-selectors'
+// import contactsOperations from './redux/contacts/contacts-operations'
+// import contactsSelectors from './redux/contacts/contacts-selectors'
 import AuthNav from './components/AuthNav'
  import HomeView from './views/HomeView'
  import RegisterView from './views/RegisterView'
@@ -31,7 +31,7 @@ class App extends Component {
      <AppBar />
     
         <Switch>
-          <Route exact path="/" component={HomeView} />
+          <PublicRoute exact path="/" component={HomeView} />
           <PublicRoute
             path="/register"
             restricted
