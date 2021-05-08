@@ -15,7 +15,7 @@ import { Switch, Route } from 'react-router-dom';
 import AppBar from './components/AppBar';
 import { authOperations } from './redux/auth';
 import PrivateRoute from './components/PrivateRoute'
-
+import PublicRoute from './components/PublicRoute'
 
 
 class App extends Component {
@@ -32,9 +32,21 @@ class App extends Component {
     
         <Switch>
           <Route exact path="/" component={HomeView} />
-          <Route path="/register" component={RegisterView} />
-          <Route path="/login" component={LoginView} />
-          <PrivateRoute path="/contacts" component={TodosView} redirectTo="/login" /> 
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo="/contacts"
+            component={RegisterView} />
+          <PublicRoute
+            path="/login"
+            restricted
+            redirectTo="/contacts"
+            component={LoginView} />
+          <PrivateRoute
+            path="/contacts"
+             redirectTo="/login"
+            component={TodosView}
+            />
        </Switch>
       </div>
 
