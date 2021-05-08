@@ -1,4 +1,5 @@
 import React from 'react';
+import defaultCat from '../components/default-cat.jpg'
 
 const styles = {
   container: {
@@ -21,6 +22,7 @@ const HomeView = () => (
       <span role="img" aria-label="Иконка приветствия">
         💁‍♀️
       </span>
+      <img src={defaultCat} alt={defaultCat}  />
     </h1>
   </div>
 );
