@@ -86,27 +86,26 @@ const logOut = () => async dispatch => {
  * 2. Если токена нет, выходим не выполняя никаких операций
  * 3. Если токен есть, добавляет его в HTTP-заголовок и выполянем операцию
  */
-// const getCurrentUser = () => async (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
+const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
 
-//   if (!persistedToken) {
-//     return;
-//   }
+  if (!persistedToken) {
+    return;
+  }
 
-//   token.set(persistedToken);
-//   dispatch(authActions.getCurrentUserRequest());
+  token.set(persistedToken);
+  dispatch(authActions.getCurrentUserRequest());
 
-//   try {
-//     const response = await axios.get('/users/current');
+  try {
+    const response = await axios.get('/users/current');
 
-//     dispatch(authActions.getCurrentUserSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.getCurrentUserError(error.message));
-//   }
-// };
+     dispatch(authActions.getCurrentUserSuccess(response.data));
+  } catch (error) {
+     dispatch(authActions.getCurrentUserError(error.message));
+  }
+};
 
-const getCurrentUser = () => (dispatch, getState) => { };
 
 export default { register, logOut, logIn, getCurrentUser };

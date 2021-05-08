@@ -35,15 +35,7 @@ class App extends Component {
     return (
       <div>
      <AppBar />
-        {/* <h1>Phonebook</h1>
-        {this.props.isLoading && <h1>...Loading</h1>}
-        <ContactForm />
-        <h2>Contacts</h2>
-        
-        <Filter />
-     
-        <ContactList /> */}
-
+    
         <Switch>
           <Route exact path="/" component={HomeView} />
           <Route path="/register" component={RegisterView} />
@@ -61,12 +53,6 @@ class App extends Component {
 const mapDispatchToProps = {
   onGetCurretnUser: authOperations.getCurrentUser,
 };
-// const mapStateToProps = state => ({
-//   isLoading: contactsSelectors.getLoading(state),
-// })
 
-// const mapDispatchToProps = dispatch => ({
-// fetchTodos: ()=>dispatch(contactsOperations.fetchTodos())
-// })
 
 export default connect(null, mapDispatchToProps)(App);
